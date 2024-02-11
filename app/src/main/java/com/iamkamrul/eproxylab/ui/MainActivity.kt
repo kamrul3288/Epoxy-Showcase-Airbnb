@@ -3,20 +3,27 @@ package com.iamkamrul.eproxylab.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.airbnb.epoxy.carousel
 import com.airbnb.epoxy.epoxyView
-import com.airbnb.epoxy.group
 import com.iamkamrul.eproxylab.R
 import com.iamkamrul.eproxylab.databinding.ActivityMainBinding
 import com.iamkamrul.eproxylab.tripSummaryItem
-import com.iamkamrul.eproxylab.ui.models.ItemTileView
+import com.iamkamrul.eproxylab.ui.models.ImageCarouselViewItem
+import com.iamkamrul.eproxylab.ui.models.TileViewItem
 import com.iamkamrul.eproxylab.ui.models.LocationItemView
 import com.iamkamrul.eproxylab.ui.models.TitleTextView
 import com.iamkamrul.eproxylab.ui.models.horizontalLine
+import com.iamkamrul.eproxylab.ui.models.imageCarouselViewItem
 import com.iamkamrul.eproxylab.ui.models.spacer
 import com.iamkamrul.eproxylab.ui.models.topAppbar
+import com.iamkamrul.eproxylab.utils.carousel
+import com.iamkamrul.eproxylab.utils.carouselNoSnapBuilder
+import com.iamkamrul.eproxylab.utils.withModelsFrom
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:ActivityMainBinding
+
+    private val imageResList = listOf(R.drawable.car_1,R.drawable.car_2,R.drawable.car_3,R.drawable.car_4,R.drawable.car_5)
 
     private val appBarViewBinder by epoxyView(
         viewId = R.id.topViewStub,
@@ -36,11 +43,13 @@ class MainActivity : AppCompatActivity() {
         appBarViewBinder.invalidate()
 
         binding.recyclerView.withModels {
+
+            //----------------trip verifications section model------------
             spacer {
                 id("root_height")
                 height(16)
             }
-            ItemTileView(
+            TileViewItem(
                 leadingIcon = R.drawable.ic_verification,
                 title = "Trip Verifications",
                 subtitle = "Collect and verify OTP from user to secure your trip",
@@ -51,11 +60,12 @@ class MainActivity : AppCompatActivity() {
             ).id("trip_verifications").addTo(this)
 
 
+            //----------------trip insurance selection model------------
             spacer {
                 id("trip_insurance_top_height")
                 height(16)
             }
-            ItemTileView(
+            TileViewItem(
                 leadingIcon = R.drawable.ic_trip_insurance,
                 title = "Trip Insurances",
                 subtitle = "Your trip is covered by insurance",
@@ -66,24 +76,37 @@ class MainActivity : AppCompatActivity() {
             ).id("trip_insurance").addTo(this)
 
 
+            //----------------trip car info selection model------------
             spacer {
                 id("trip_car_info_top_height")
                 height(16)
             }
-            ItemTileView(
+            TileViewItem(
                 leadingIcon = R.drawable.ic_car_placeholder,
                 title = "Toyota Primo - 4 Seat",
                 subtitle = "DHA GA 36-5467",
                 trailingIcon = R.drawable.ic_arrow_forward,
+                isVisibleLine = false,
                 onTap = {
                     Toast.makeText(applicationContext, "Car Info Clicked", Toast.LENGTH_SHORT).show()
                 }
             ).id("trip_car_info").addTo(this)
 
-            spacer {
-                id("location_view_margin")
-                height(24)
+
+            //----------------car image no snap carousel------------
+            carouselNoSnapBuilder {
+                id("car_carousel")
+                numViewsToShowOnScreen(1.2f)
+                imageResList.forEachIndexed { index, i ->
+                    imageCarouselViewItem {
+                        id("image_carousel_item_$index")
+                        imageRes(i)
+                    }
+                }
             }
+
+
+            //----------------location info section------------
             LocationItemView(
                 pickupLocation = "Burger King, Dhaka, Bangladesh, Airport",
                 dropLocation = "Dakbangla Bazar, Rd No #23"
@@ -93,6 +116,8 @@ class MainActivity : AppCompatActivity() {
                 id("trip_summary_line")
             }
 
+
+            //----------------trip summary section------------
             TitleTextView("Trip Summary")
                 .id("trip_summary").addTo(this)
 
@@ -155,6 +180,7 @@ class MainActivity : AppCompatActivity() {
             }
 
 
+            //----------------user info section------------
             horizontalLine {
                 id("user_info_h_line")
             }
@@ -165,7 +191,7 @@ class MainActivity : AppCompatActivity() {
                 id("user_info_margin")
                 height(8)
             }
-            ItemTileView(
+            TileViewItem(
                 leadingIcon = R.drawable.ic_avara,
                 title = "Kamrul Hasan",
                 subtitle = "Dhaka, Bangladesh",
@@ -176,6 +202,8 @@ class MainActivity : AppCompatActivity() {
                 }
             ).id("user_info").addTo(this)
 
+
+            //----------------driver info section------------
             horizontalLine {
                 id("driver_info_h_line")
             }
@@ -186,7 +214,7 @@ class MainActivity : AppCompatActivity() {
                 id("driver_info_margin")
                 height(8)
             }
-            ItemTileView(
+            TileViewItem(
                 leadingIcon = R.drawable.ic_avara,
                 title = "Mr. Belal",
                 subtitle = "Jhenaidah, Bangladesh",
@@ -199,5 +227,4 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
 }

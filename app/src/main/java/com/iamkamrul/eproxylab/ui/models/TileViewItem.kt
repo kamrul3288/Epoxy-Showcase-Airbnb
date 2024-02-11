@@ -4,18 +4,18 @@ import android.view.View
 import androidx.annotation.DrawableRes
 import androidx.core.view.isVisible
 import com.iamkamrul.eproxylab.R
-import com.iamkamrul.eproxylab.databinding.ItemTileViewBinding
+import com.iamkamrul.eproxylab.databinding.TileViewItemBinding
 import com.iamkamrul.eproxylab.utils.ViewBindingKotlinModel
 
-data class ItemTileView(
+data class TileViewItem(
     @DrawableRes val leadingIcon:Int,
     val title:String,
     val subtitle:String,
     @DrawableRes val trailingIcon:Int,
     val isVisibleLine:Boolean = true,
     val onTap:(View)->Unit
-):ViewBindingKotlinModel<ItemTileViewBinding>(R.layout.item_tile_view){
-    override fun ItemTileViewBinding.bind() {
+):ViewBindingKotlinModel<TileViewItemBinding>(R.layout.tile_view_item){
+    override fun TileViewItemBinding.bind() {
         titleTv.text = title
         subTitleTv.text = subtitle
         leadingIconBtn.setBackgroundResource(leadingIcon)
