@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.airbnb.epoxy.epoxyView
+import com.airbnb.epoxy.group
 import com.iamkamrul.eproxylab.R
 import com.iamkamrul.eproxylab.databinding.ActivityMainBinding
+import com.iamkamrul.eproxylab.tripSummaryItem
 import com.iamkamrul.eproxylab.ui.models.ItemTileView
 import com.iamkamrul.eproxylab.ui.models.LocationItemView
+import com.iamkamrul.eproxylab.ui.models.TitleTextView
 import com.iamkamrul.eproxylab.ui.models.horizontalLine
 import com.iamkamrul.eproxylab.ui.models.spacer
 import com.iamkamrul.eproxylab.ui.models.topAppbar
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -89,6 +93,109 @@ class MainActivity : AppCompatActivity() {
                 id("trip_summary_line")
             }
 
+            TitleTextView("Trip Summary")
+                .id("trip_summary").addTo(this)
+
+            spacer {
+                id("trip_summary_margin")
+                height(16)
+            }
+            tripSummaryItem {
+                id("trip_date_time")
+                leading("Trip Date Time")
+                trailing("11 Feb 2024 01:16 PM")
+            }
+
+            tripSummaryItem {
+                id("trip_duration")
+                leading("Trip Duration")
+                trailing("3 Days")
+            }
+
+            tripSummaryItem {
+                id("estimated_trip_end_date")
+                leading("Estimated Trip End")
+                trailing("14 Feb 2024 01:16 PM")
+            }
+
+            tripSummaryItem {
+                id("trip_fare")
+                leading("Trip Fare")
+                trailing("৳ 8000")
+            }
+
+            tripSummaryItem {
+                id("platform_charge")
+                leading("Platform Charge")
+                trailing("৳ 800")
+            }
+
+            tripSummaryItem {
+                id("your_earnings")
+                leading("Your Earnings")
+                trailing("৳ 7200")
+            }
+
+            tripSummaryItem {
+                id("payment_method")
+                leading("Payment Method")
+                trailing("CASH")
+            }
+
+
+            spacer {
+                id("additional_note_margin")
+                height(8)
+            }
+            TitleTextView("Additional Note")
+                .id("additional_note").addTo(this)
+            tripSummaryItem {
+                id("additional_note_value")
+                leading(getString(R.string.lorem))
+            }
+
+
+            horizontalLine {
+                id("user_info_h_line")
+            }
+            TitleTextView("User Info")
+                .id("user_info_title").addTo(this)
+
+            spacer {
+                id("user_info_margin")
+                height(8)
+            }
+            ItemTileView(
+                leadingIcon = R.drawable.ic_avara,
+                title = "Kamrul Hasan",
+                subtitle = "Dhaka, Bangladesh",
+                trailingIcon = R.drawable.ic_call,
+                isVisibleLine = false,
+                onTap = {
+                    Toast.makeText(applicationContext, "Trip Insurances Clicked", Toast.LENGTH_SHORT).show()
+                }
+            ).id("user_info").addTo(this)
+
+            horizontalLine {
+                id("driver_info_h_line")
+            }
+            TitleTextView("Driver Info")
+                .id("driver_info_title").addTo(this)
+
+            spacer {
+                id("driver_info_margin")
+                height(8)
+            }
+            ItemTileView(
+                leadingIcon = R.drawable.ic_avara,
+                title = "Mr. Belal",
+                subtitle = "Jhenaidah, Bangladesh",
+                trailingIcon = R.drawable.ic_call,
+                isVisibleLine = false,
+                onTap = {
+                    Toast.makeText(applicationContext, "Trip Insurances Clicked", Toast.LENGTH_SHORT).show()
+                }
+            ).id("driver_info").addTo(this)
         }
 
     }
