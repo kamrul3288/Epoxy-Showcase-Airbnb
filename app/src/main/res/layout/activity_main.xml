@@ -13,6 +13,7 @@
 
     <com.airbnb.epoxy.EpoxyRecyclerView
         android:id="@+id/recyclerView"
+        android:paddingHorizontal="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
