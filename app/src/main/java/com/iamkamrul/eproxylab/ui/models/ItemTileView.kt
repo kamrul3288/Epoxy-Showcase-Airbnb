@@ -6,7 +6,7 @@ import com.iamkamrul.eproxylab.R
 import com.iamkamrul.eproxylab.databinding.ItemTileViewBinding
 import com.iamkamrul.eproxylab.utils.ViewBindingKotlinModel
 
-data class ItemTileModel(
+data class ItemTileView(
     @DrawableRes val leadingIcon:Int,
     val title:String,
     val subtitle:String,

@@ -9,7 +9,7 @@ import com.airbnb.epoxy.ModelView
 import com.iamkamrul.eproxylab.utils.displayRatioValue
 
 @ModelView(autoLayout = ModelView.Size.MANUAL)
-class SpacerModel @JvmOverloads constructor(
+class Spacer @JvmOverloads constructor(
     private val context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
