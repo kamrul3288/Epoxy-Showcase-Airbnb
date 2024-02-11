@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">EProxyLab</string>
-    <string name="btn_complex_layout_1">Complex Layout Sample One</string>
-    <string name="btn_complex_layout_2">Complex Layout Sample Two</string>
+    <string name="btn_content_des_back">Back</string>
 </resources>
