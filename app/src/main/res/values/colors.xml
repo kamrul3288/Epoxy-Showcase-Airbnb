@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="purple_40">#6750A4</color>
+    <color name="purple_50">#7F67BE</color>
+    <color name="purple_60">#9A82DB</color>
+    <color name="purple_70">#B69DF8</color>
+    <color name="purple_80">#D0BCFF</color>
+
+    <color name="purple_gray_40">#625b71</color>
+    <color name="light_gray">#F6F6F6</color>
+
+    <color name="pink_40">#7D5260</color>
+    <color name="pink_50">#986977</color>
+    <color name="pink_60">#B58392</color>
+    <color name="pink_70">#D29DAC</color>
+    <color name="pink_80">#EFB8C8</color>
+
+    <color name="black">#000000</color>
+    <color name="black_10">#1D1A22</color>
+    <color name="black_20">#322F37</color>
+    <color name="black_30">#49454F</color>
+    <color name="black_40">#605D66</color>
+    <color name="black_50">#79747E</color>
+    <color name="black_60">#938F99</color>
+    <color name="black_70">#AEA9B4</color>
+    <color name="black_80">#CAC4D0</color>
+
+
 </resources>
